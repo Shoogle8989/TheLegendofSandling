@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3a6gv0f0013n"]
+
+[ext_resource type="Texture2D" uid="uid://b8qiixhm7506m" path="res://sprites/dungeon/Dungeon Tileset.png" id="1_i4b45"]
+[ext_resource type="Shape2D" uid="uid://b7xl8tcwbwvpv" path="res://scenes/Rooms/stone.tres" id="2_igfv4"]
+
+[node name="Stone" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_i4b45")
+region_enabled = true
+region_rect = Rect2(323, 91, 16, 16)
+
+[node name="stone" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stone"]
+shape = ExtResource("2_igfv4")

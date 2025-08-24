@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bln2kv438p3c0"]
+
+[ext_resource type="PackedScene" uid="uid://df4okav03y7mf" path="res://scenes/Rooms/dungeon_template.tscn" id="2_4dvvg"]
+[ext_resource type="PackedScene" uid="uid://bao0fc35pxgx7" path="res://scenes/actors/player.tscn" id="2_rnjyy"]
+[ext_resource type="PackedScene" uid="uid://do0wp5ieuh7x3" path="res://scenes/actors/base_enemy.tscn" id="3_rnjyy"]
+
+[node name="Test_Scene" type="Node2D"]
+
+[node name="DungeonTemplate" parent="." instance=ExtResource("2_4dvvg")]
+z_index = -1
+
+[node name="DungeonTemplate2" parent="." instance=ExtResource("2_4dvvg")]
+z_index = -1
+position = Vector2(-256, 0)
+
+[node name="DungeonTemplate3" parent="." instance=ExtResource("2_4dvvg")]
+z_index = -1
+position = Vector2(256, 0)
+
+[node name="DungeonTemplate4" parent="." instance=ExtResource("2_4dvvg")]
+z_index = -1
+position = Vector2(0, -176)
+
+[node name="DungeonTemplate5" parent="." instance=ExtResource("2_4dvvg")]
+z_index = -1
+position = Vector2(0, 176)
+
+[node name="BaseEnemy" parent="." instance=ExtResource("3_rnjyy")]
+position = Vector2(168, 152)
+
+[node name="Player" parent="." instance=ExtResource("2_rnjyy")]
+position = Vector2(56, 136)
+motion_mode = 1

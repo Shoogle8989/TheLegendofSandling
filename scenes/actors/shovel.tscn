@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://bf5dyot5xx47k"]
+
+[ext_resource type="Texture2D" uid="uid://bjxp33ddv3cnx" path="res://sprites/items/shovel sprite.png" id="1_0htdx"]
+[ext_resource type="Script" uid="uid://dx84p2lsxjxci" path="res://scenes/actors/shovel.gd" id="1_uf8t2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0htdx"]
+size = Vector2(10, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf8t2"]
+atlas = ExtResource("1_0htdx")
+region = Rect2(0, 0, 8, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur8tn"]
+atlas = ExtResource("1_0htdx")
+region = Rect2(0, 0, 8, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbl5w"]
+atlas = ExtResource("1_0htdx")
+region = Rect2(8, 0, 8, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyx6l"]
+atlas = ExtResource("1_0htdx")
+region = Rect2(16, 0, 8, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5288"]
+atlas = ExtResource("1_0htdx")
+region = Rect2(18, 9, 6, 3)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f5288"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf8t2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur8tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbl5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyx6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5288")
+}],
+"loop": false,
+"name": &"use",
+"speed": 15.0
+}]
+
+[node name="Shovel" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_uf8t2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 7)
+shape = SubResource("RectangleShape2D_0htdx")
+debug_color = Color(0.996078, 0, 0, 0.419608)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(1, 6)
+sprite_frames = SubResource("SpriteFrames_f5288")
+animation = &"use"
+frame = 1
+frame_progress = 0.751354
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered" flags=6]

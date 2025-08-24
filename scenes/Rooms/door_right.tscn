@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://8eg7qdtb22n0"]
+
+[ext_resource type="Texture2D" uid="uid://b8qiixhm7506m" path="res://sprites/dungeon/Dungeon Tileset.png" id="1_851xu"]
+[ext_resource type="Shape2D" uid="uid://3hpi7fyhb23m" path="res://scenes/Rooms/door.tres" id="2_yluo0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_851xu"]
+atlas = ExtResource("1_851xu")
+region = Rect2(881, 77, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yluo0"]
+atlas = ExtResource("1_851xu")
+region = Rect2(848, 77, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4gw5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_851xu")
+}],
+"loop": false,
+"name": &"close",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yluo0")
+}],
+"loop": true,
+"name": &"open",
+"speed": 0.0
+}]
+
+[node name="Door_Side" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_c4gw5")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16, 0)
+shape = ExtResource("2_yluo0")
+disabled = true
+
+[node name="door_frame" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(8, 0)
+texture = ExtResource("1_851xu")
+region_enabled = true
+region_rect = Rect2(864, 77, 16, 32)

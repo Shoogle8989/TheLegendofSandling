@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://df4okav03y7mf"]
+
+[ext_resource type="Texture2D" uid="uid://b8qiixhm7506m" path="res://sprites/dungeon/Dungeon Tileset.png" id="1_xp728"]
+[ext_resource type="Shape2D" uid="uid://cb1nbipv0ougi" path="res://scenes/Rooms/sidewall.tres" id="2_bx4wp"]
+[ext_resource type="PackedScene" uid="uid://c3a6gv0f0013n" path="res://scenes/Rooms/stone.tscn" id="2_t4taw"]
+[ext_resource type="Shape2D" uid="uid://b75i70gvuu5i5" path="res://scenes/Rooms/h_wall.tres" id="3_uu7qr"]
+[ext_resource type="PackedScene" uid="uid://crw3nxjsv2aut" path="res://scenes/Rooms/door_left.tscn" id="4_bx4wp"]
+[ext_resource type="PackedScene" uid="uid://c77opcd14lwoc" path="res://scenes/Rooms/door_up.tscn" id="5_c4gw5"]
+[ext_resource type="PackedScene" uid="uid://8eg7qdtb22n0" path="res://scenes/Rooms/door_right.tscn" id="7_4xmbd"]
+[ext_resource type="PackedScene" uid="uid://c8hkbcsaf5ddw" path="res://scenes/Rooms/door_down.tscn" id="8_jrnmd"]
+
+[node name="DungeonTemplate" type="Node2D"]
+
+[node name="Walls" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(128, 152)
+texture = ExtResource("1_xp728")
+region_enabled = true
+region_rect = Rect2(521, 11, 256, 176)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+z_index = 1
+position = Vector2(-112, -52)
+shape = ExtResource("2_bx4wp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+z_index = 1
+position = Vector2(-112, 52)
+shape = ExtResource("2_bx4wp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+z_index = 1
+position = Vector2(112, 52)
+shape = ExtResource("2_bx4wp")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+z_index = 1
+position = Vector2(112, -52)
+shape = ExtResource("2_bx4wp")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+z_index = 1
+position = Vector2(-56.5, 72)
+shape = ExtResource("3_uu7qr")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+z_index = 1
+position = Vector2(56.5, 72)
+shape = ExtResource("3_uu7qr")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+z_index = 1
+position = Vector2(56.5, -62)
+shape = ExtResource("3_uu7qr")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+z_index = 1
+position = Vector2(-56.5, -62)
+shape = ExtResource("3_uu7qr")
+
+[node name="Floor" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(128, 152)
+texture = ExtResource("1_xp728")
+region_enabled = true
+region_rect = Rect2(1, 192, 192, 112)
+
+[node name="Stone" parent="." instance=ExtResource("2_t4taw")]
+z_index = -1
+y_sort_enabled = false
+position = Vector2(120, 152)
+
+[node name="Door_h" parent="." instance=ExtResource("5_c4gw5")]
+position = Vector2(128, 80)
+
+[node name="Door" parent="." instance=ExtResource("4_bx4wp")]
+position = Vector2(16, 152)
+
+[node name="Door_Side" parent="." instance=ExtResource("7_4xmbd")]
+position = Vector2(240, 152)
+
+[node name="Door_down" parent="." instance=ExtResource("8_jrnmd")]
+position = Vector2(128, 224)

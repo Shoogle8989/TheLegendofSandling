@@ -1,0 +1,237 @@
+[gd_scene load_steps=7 format=3 uid="uid://bivjnh1xdav58"]
+
+[ext_resource type="Texture2D" uid="uid://bwiw0gunet0cg" path="res://sprites/HUD/NES - The Legend of Zelda - Miscellaneous - HUD & Pause Screen.png" id="1_wy36x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvwud"]
+atlas = ExtResource("1_wy36x")
+region = Rect2(627, 117, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xoxy"]
+atlas = ExtResource("1_wy36x")
+region = Rect2(636, 117, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51tai"]
+atlas = ExtResource("1_wy36x")
+region = Rect2(645, 117, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wy36x"]
+atlas = ExtResource("1_wy36x")
+region = Rect2(501, 117, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0j368"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvwud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xoxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51tai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wy36x")
+}],
+"loop": false,
+"name": &"Heart",
+"speed": 0.0
+}]
+
+[node name="Interface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+top_level = true
+layout_mode = 0
+offset_top = -176.0
+offset_right = 256.0
+offset_bottom = 64.0
+
+[node name="HUD" type="Sprite2D" parent="GridContainer"]
+position = Vector2(0, 184)
+texture = ExtResource("1_wy36x")
+centered = false
+region_enabled = true
+region_rect = Rect2(258, 11, 256, 56)
+
+[node name="Map" type="Sprite2D" parent="GridContainer"]
+position = Vector2(0, 96)
+texture = ExtResource("1_wy36x")
+centered = false
+region_enabled = true
+region_rect = Rect2(258, 112, 256, 88)
+
+[node name="Inventory" type="Sprite2D" parent="GridContainer"]
+position = Vector2(0, 8)
+texture = ExtResource("1_wy36x")
+centered = false
+region_enabled = true
+region_rect = Rect2(1, 11, 256, 88)
+
+[node name="Background" type="Sprite2D" parent="GridContainer"]
+texture = ExtResource("1_wy36x")
+centered = false
+region_enabled = true
+region_rect = Rect2(258, 11, 256, 8)
+
+[node name="HealthBar" type="HBoxContainer" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 176.0
+offset_top = 40.0
+offset_right = 236.0
+offset_bottom = 48.0
+
+[node name="Heart" type="TextureRect" parent="HealthBar"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar/Heart"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart2" type="TextureRect" parent="HealthBar"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar/Heart2"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart3" type="TextureRect" parent="HealthBar"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar/Heart3"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart4" type="TextureRect" parent="HealthBar"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar/Heart4"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart5" type="TextureRect" parent="HealthBar"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar/Heart5"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart6" type="TextureRect" parent="HealthBar"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar/Heart6"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart7" type="TextureRect" parent="HealthBar"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar/Heart7"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart8" type="TextureRect" parent="HealthBar"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar/Heart8"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="HealthBar2" type="HBoxContainer" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 176.0
+offset_top = 48.0
+offset_right = 236.0
+offset_bottom = 56.0
+
+[node name="Heart" type="TextureRect" parent="HealthBar2"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar2/Heart"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart2" type="TextureRect" parent="HealthBar2"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar2/Heart2"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart3" type="TextureRect" parent="HealthBar2"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar2/Heart3"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart4" type="TextureRect" parent="HealthBar2"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar2/Heart4"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart5" type="TextureRect" parent="HealthBar2"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar2/Heart5"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart6" type="TextureRect" parent="HealthBar2"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar2/Heart6"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart7" type="TextureRect" parent="HealthBar2"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar2/Heart7"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
+
+[node name="Heart8" type="TextureRect" parent="HealthBar2"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="Heart" type="AnimatedSprite2D" parent="HealthBar2/Heart8"]
+sprite_frames = SubResource("SpriteFrames_0j368")
+animation = &"Heart"
+centered = false
