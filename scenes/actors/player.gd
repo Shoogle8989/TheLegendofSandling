@@ -18,7 +18,20 @@ var max_health = max_hearts*2 #each heart represents 2 health
 # Track the press order
 var press_order := []
 
+
+# --- screen transition vars ---
+var on_transition: bool = false
+var auto_walk_dir: Vector2 = Vector2.ZERO
+var auto_walk_distance: float = 0.0
+@export var room_size: Vector2 = Vector2(256, 176) # width × height of the bottom-room
+@export var room_offset_y: float = 64.0           # top excluded area
+@export var push_distance: float = 8.0
+@export var edge_margin: float = 5.0
+
 func _ready() -> void:
+	var cam = get_node("../Camera2D") # adjust path if needed
+	cam.room_changed.connect(_on_room_changed)
+	cam.tween_finished.connect(_on_camera_finished)
 	$CanvasLayer.visible = true
 	set_health_bar()
 
@@ -71,7 +84,17 @@ func _physics_process(delta):
 	if is_hurt:
 		process_hurt(delta)
 		return
-
+	if on_transition:
+		if auto_walk_distance > 0.0:
+			var step = speed * delta
+			if step >= auto_walk_distance:
+				global_position += auto_walk_dir * auto_walk_distance
+				auto_walk_distance = 0.0
+				auto_walk_dir = Vector2.ZERO
+			else:
+				global_position += auto_walk_dir * step
+				auto_walk_distance -= step
+		return
 	var input_dir := Vector2.ZERO
 	
 	if not is_attacking:
@@ -114,6 +137,8 @@ func _physics_process(delta):
 			anim.pause()
 			
 func start_attack():
+	if on_transition:
+		return
 	is_attacking = true
 
 	var spawner: Node2D
@@ -148,6 +173,35 @@ func start_attack():
 	# Play player attack animation
 	anim.play(attack_anim)
 
+# ---------------------------
+# SCREEN TRANSITION
+# ---------------------------
+# --- called by the Camera: _on_room_changed(new_room) ---
+func _on_room_changed(_new_room: Vector2) -> void:
+	on_transition = true
+
+	# remainders based on bottom-room coordinates
+	var rem_x := fposmod(global_position.x, room_size.x)
+	var rem_y := fposmod(global_position.y - room_offset_y, room_size.y)
+	var right_thresh := room_size.x - edge_margin
+	var bottom_thresh := room_size.y - edge_margin
+
+	if rem_x <= edge_margin:
+		auto_walk_dir = Vector2.RIGHT
+		auto_walk_distance = push_distance
+	elif rem_x >= right_thresh:
+		auto_walk_dir = Vector2.LEFT
+		auto_walk_distance = push_distance
+	elif rem_y <= edge_margin:
+		auto_walk_dir = Vector2.DOWN
+		auto_walk_distance = push_distance
+	elif rem_y >= bottom_thresh:
+		auto_walk_dir = Vector2.UP
+		auto_walk_distance = push_distance
+		
+func _on_camera_finished():
+	# enable player control AFTER camera has finished panning
+	on_transition = false
 
 func _on_attack_anim_finished():
 	print(is_attacking)

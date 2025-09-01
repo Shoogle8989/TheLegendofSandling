@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckauv6hh6o6dt"]
+
+[ext_resource type="Script" uid="uid://dru2mk1e2vp00" path="res://scenes/actors/camera_2d.gd" id="1_yr1j3"]
+
+[node name="Camera2D" type="Camera2D"]
+ignore_rotation = false
+script = ExtResource("1_yr1j3")
